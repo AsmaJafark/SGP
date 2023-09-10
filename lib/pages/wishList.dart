@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:untitled/customer.dart';
 import 'package:untitled/models/cart_item.dart';
 import 'package:untitled/models/product.dart';
 import 'package:untitled/pages/cart.dart';
@@ -158,8 +159,8 @@ myList=await fetch.most();
     
 
       listItems.add(Container(
-          height: 100,
-          width: 300,
+          // height: 100,
+          // width: 300,
           margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
           decoration: BoxDecoration(
             
@@ -200,17 +201,26 @@ myList=await fetch.most();
                           color: Colors.black,
                           fontWeight: FontWeight.bold),
                     ),
-                  Row(  
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly, 
-           
-          children:<Widget>[
-            
+                    Center(
+                      child: ElevatedButton.icon(
+                          onPressed: () async {
+                            Customer customer = Customer();
+                            var result = await customer.addProductToCart(post.id.toString());
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                  content: Text(result['status'].toString()) ),
+                            );
+                          },
+                          icon: const Icon(Icons.add_circle_outline),
+                          label: const Text('Add To Cart')),
+                    ),
 
-
-          ]),
                   ],
                 ),
-                Image.asset(post.image,width: 100,height: 80,),
+                Expanded(
+                    child: Image.asset('assets/images/${post.image}',width: 100,height: 80,),
+
+                )
 
                
               ],

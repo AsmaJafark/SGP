@@ -1,3 +1,4 @@
+import 'package:untitled/customer.dart';
 import 'package:untitled/models/market.dart';
 import 'package:untitled/models/offermodel.dart';
 import 'package:untitled/pages/Sharedsession.dart';
@@ -41,32 +42,19 @@ import 'package:url_launcher/url_launcher.dart';
 class fetchdata {
 
 
- static const String apiUrl = "http://192.168.1.65:3000/";
+ static const String apiUrl = "https://womenstore112.000webhostapp.com/";
 
 
-Future <List<CartItem>> wish1() async  {
-  final prefs = await SharedPreferences.getInstance();
-  String k=prefs.get("namename").toString() ;
-  List<CartItem> mylist2;
-  
-    http.Response res = await http.get(Uri.parse(fetchdata.apiUrl+'showlist?username='+k),
-  headers: {
-'Content-Type':'application/json'
+Future <List<Product1>> wish1() async  {
 
-  }
-       
- );
+  Customer customer = Customer();
+  late  List<Product1> myList=[];
 
+  var jsonString = await customer.getUserCartProducts();
+  List<Product1> list = List<Product1>.from(jsonString['message']['products'].map((i) => Product1.fromJson(i)));
+  myList = list;
+  return myList;
 
-  if (res.statusCode == 200) {
-   var jsonString = json.decode(res.body);
-    List<CartItem> list = List<CartItem>.from(jsonString.map((i) => CartItem.fromJson(i)));
-    mylist2= list;  
-
-  } else {
-    
-    throw Exception('Failed to load album');
-  }return mylist2;
 }
 
 Future <List<Product1>> showlistitem() async {
@@ -230,26 +218,13 @@ Future <List<usercomment>> comment() async {
 }
 
 Future <List<Product>> most() async {
+  Customer customer = Customer();
   late  List<Product> myList=[];
 
-  http.Response res = await http.get(Uri.parse(fetchdata.apiUrl+'most'),
-      headers: {'Content-Type': 'application/json'});
-
-  if (res.statusCode == 200) {
-    // If the server did return a 200 OK response,
-    // then parse the JSON.
-
-    var jsonString = json.decode(res.body);
-    List<Product> list =
-        List<Product>.from(jsonString.map((i) => Product.fromJson(i)));
-// List<Product> products = jsonString.map((jsonMap) => Product.fromJson(jsonMap)).toList();
-    myList = list;
-   
-  } else {
-    // If the server did not return a 200 OK response,
-    // then throw an exception.
-    throw Exception('Failed to load album');
-  } return myList;
+  var jsonString = await customer.getAllProducts();
+  List<Product> list = List<Product>.from(jsonString['message']['products'].map((i) => Product.fromJson(i)));
+  myList = list;
+  return myList;
 }
 
 Future  getinfo11() async {
@@ -508,7 +483,7 @@ Future   sendemail(String n1) async {
       
         jawna.forEach((post) {
            
-          jojo=jojo +(i1=i1+1).toString()+'. '+post.productName+' | '+ "\ ${post.amount}"+'  price--->'+ "\$ ${post.price}"+'\n';
+          jojo=jojo +(i1=i1+1).toString()+'. '+post.productName+' | '+ "\ ${post.quantity}"+'  price--->'+ "\$ ${post.price}"+'\n';
         num=num+post.price;
         });
          jojo=jojo+'\n';

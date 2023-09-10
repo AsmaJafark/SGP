@@ -188,7 +188,7 @@ myList=await fetch.showlistitem();
                       post.manufacturing,
                       style: const TextStyle(fontSize: 17, color: Colors.grey),
                     ),  Text(
-                      "mount: ${post.amount}",
+                      "mount: ${post.quantity}",
                       style: const TextStyle(
                           fontSize: 17, fontWeight: FontWeight.bold),
                     ),Text(
@@ -207,7 +207,7 @@ myList=await fetch.showlistitem();
                   onSurface: Colors.grey,
                 ),
                 onPressed: () async{
-                 delete(post.productName,post.amount);
+                 delete(post.productName,post.quantity);
                  getlistitem();
                  getPostsData();
                 },
@@ -225,7 +225,8 @@ myList=await fetch.showlistitem();
                 // )
               ],
             ),
-          )));
+          ))
+      );
     });
     setState(() {
       itemsData = listItems;

@@ -20,6 +20,8 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:untitled/pages/fetchdata.dart';
 
+import 'customer.dart';
+
 var sessionManager = SessionManager();
 
 //UI USER INTERFACs
@@ -101,64 +103,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     super.initState();
   }
 
-  Future login1(String n, String p) async {
-     
-    fetchdata fetch = new fetchdata();
-    try {
-//await
-      var res = await fetch.login(n, p);
-      
-      print(res);
-      if (res.body.contains("@")) {
-      var jsonString = json.decode(res.body)as List;
-      String  emailc=jsonString.elementAt(0)['email'];
- if (emailc!='' &&p!='') {
-                           
-                        setState(() {
-                          showSpinner = true;
-                        });
-
-                        logIn(emailc.replaceAll(' ', ''), p)
-                            .then((user) {
-                               print(emailc);
-                          if (user != null) {
-                            print("Login Sucessfull");
-                            setState(() {
-                              showSpinner = false;
-                            });
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (_) => homm()));
-                          } else {
-                            print("Login Failed");
-                            setState(() {
-                              showSpinner = false;
-                            });
-                          }
-                        });
-                      } else {
-                        print("Please fill form correctly");
-                      }
-        Navigator.of(context).push(MaterialPageRoute(builder: (c) => homm()));
-
-        return const homm();
-      } else {
-        print("failed1");
-        AlertDialog alert = AlertDialog(
-          content: Text("please try again"),
-        );
-        // show the dialog
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return alert;
-          },
-        );
-      }
-    } catch (e) {
-      print("no login");
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -201,7 +145,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                                 color: AppColors.DARK_GREEN, width: 2.0),
                             borderRadius: BorderRadius.circular(25.0),
                           ),
-                          labelText: 'User Name',
+                          labelText: 'User Email',
                           prefixIcon: Padding(
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 20.0),
@@ -293,32 +237,21 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     borderColor: Color.fromARGB(255, 172, 190, 90),
                     borderWidth: 4,
                     onClick: () async {
-                      login1(nameController.text, passwordController.text);
-                      // if (emailController.text.isNotEmpty &&
-                      //     passwordController.text.isNotEmpty) {
-                      //   setState(() {
-                      //     showSpinner = true;
-                      //   });
+                      Customer customer = Customer();
+                      var result = await customer.loginToBackend(nameController.text, passwordController.text);
 
-                      //   logIn(emailController.text, passwordController.text)
-                      //       .then((user) {
-                      //     if (user != null) {
-                      //       print("Login Sucessfull");
-                      //       setState(() {
-                      //         showSpinner = false;
-                      //       });
-                      //       Navigator.push(context,
-                      //           MaterialPageRoute(builder: (_) => homm()));
-                      //     } else {
-                      //       print("Login Failed");
-                      //       setState(() {
-                      //         showSpinner = false;
-                      //       });
-                      //     }
-                      //   });
-                      // } else {
-                      //   print("Please fill form correctly");
-                      // }
+                      if (result['status'] == 'success') {
+                        Navigator.push( context, MaterialPageRoute(
+                            builder: (_) => homm()
+                        ));
+                      } else {
+                        debugPrint('error: $result');
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                              content: Text(result['message'])),
+                        );
+                      }
+
                     },
                   )),
                   Row(
@@ -367,6 +300,7 @@ class MyStatefulWidget2 extends StatefulWidget {
 class _MyStatefulWidgetState2 extends State<MyStatefulWidget2> {
   final _auth = FirebaseAuth.instance;
 
+  late String id;
   late String name;
   late String email;
   late String place;
@@ -395,27 +329,6 @@ class _MyStatefulWidgetState2 extends State<MyStatefulWidget2> {
   @override
   void initState() {
     super.initState();
-  }
-
-  void register(String name, String pass, String email, String place,
-      String phone1) async {
-    try {
-      http.Response res = await http.get(
-          Uri.parse(fetchdata.apiUrl +
-              'register?username=' +
-              name +
-              '&&userpass=' +
-              pass +
-              '&&place=' +
-              place +
-              '&&email=' +
-              email +
-              '&&phone=' +
-              phone1),
-          headers: {'Content-Type': 'application/json'});
-    } catch (e) {
-      print("no register");
-    }
   }
 
   final _formKey = GlobalKey<FormState>();
@@ -678,51 +591,25 @@ class _MyStatefulWidgetState2 extends State<MyStatefulWidget2> {
                           ),
                           child: const Text('Register'),
                           onPressed: () async {
-                            if (_formKey.currentState!.validate()) {
-                              register(
-                                  nameController2.text,
-                                  passwordController2.text,
-                                  emailController2.text,
-                                  placeController2.text,
-                                  phoneController2.text);
 
+                            if (_formKey.currentState!.validate()) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
                                     content: Text('Processing Data')),
                               );
-                            }
-                            // print(email);
-                            // print(password);
-                            if (nameController2.text.isNotEmpty &&
-                                emailController2.text.isNotEmpty &&
-                                passwordController2.text.isNotEmpty) {
-                              setState(() {
-                                showSpinner = true;
-                              });
-
-                              createAccount(
-                                      nameController2.text,
-                                      emailController2.text,
-                                      passwordController2.text)
-                                  .then((user) {
-                                if (user != null) {
-                                  setState(() {
-                                    showSpinner = false;
-                                  });
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (_) => firstWithFireBase()));
-                                  print("Account Created Sucessfull");
-                                } else {
-                                  print("Login Failed");
-                                  setState(() {
-                                    showSpinner = false;
-                                  });
-                                }
-                              });
-                            } else {
-                              print("Please enter Fields");
+                              Customer customer = Customer();
+                              var result = await customer.signupToBackend( nameController2.text, passwordController2.text, emailController2.text, placeController2.text, phoneController2.text);
+                              if (result['status'] == 'success') {
+                                Navigator.push( context, MaterialPageRoute(
+                                    builder: (_) => firstWithFireBase()
+                                ));
+                              } else {
+                                debugPrint('error: $result');
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                      content: Text(result['message'])),
+                                );
+                              }
                             }
                           },
                         )),

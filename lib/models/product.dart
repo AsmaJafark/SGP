@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/cupertino.dart';
 import 'dart:math';
 import 'dart:typed_data';
@@ -5,6 +7,7 @@ import 'dart:convert';
 enum Shade { orange, green }
 
 class Product {
+  final int id;
   final String marketName;
   final String productName;
   // final int  quantity;
@@ -19,10 +22,11 @@ class Product {
 final  String   image;
   
 factory Product.fromJson(Map<String,dynamic> json) => Product(
+    id: int.parse(json['id'].toString()),
     marketName: json['marketName']  == null ? '' : json['marketName']as String,
   productName: json['productName']  == null ? '' : json['productName']as String,
     // quantity: json['quantity']  == null ? 0 : json['quantity'] as int,
-    price: json['price'] == null ? 0 : json['price'] as int,
+    price: json['price'].toString() == null ? 0 : int.parse(json['price'].toString()),
     manufacturing: json['manufacturing']  == null ? '' : json['manufacturing']as String,
     //  image: json['image'] as List<int>?,
     // image: Uint8List.fromList((json['image'] as List)
@@ -47,6 +51,7 @@ factory Product.fromJson(Map<String,dynamic> json) => Product(
     this.description,
     this.inCart = false,
     this.shade = Shade.green,
+    required int this.id,
   });
 
   String getFormattedPrice() {
@@ -58,6 +63,7 @@ factory Product.fromJson(Map<String,dynamic> json) => Product(
 
  Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id.toString();
     data['marketName'] = this.marketName;
      data['productName'] = this.productName;
     //  data['quantity'] = this.quantity;
