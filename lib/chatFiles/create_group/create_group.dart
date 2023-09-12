@@ -60,7 +60,7 @@ class _CreateGroupState extends State<CreateGroup> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 172, 190, 90),
+        backgroundColor: Color.fromARGB(255, 180, 90, 190),
         title: Text("Group Name"),
       ),
       body: isLoading
@@ -99,8 +99,8 @@ class _CreateGroupState extends State<CreateGroup> {
                           ),
                           filled: true,
                           hintStyle: TextStyle(
-                              color: Color.fromARGB(255, 153, 158, 106)),
-                          fillColor: Color.fromARGB(255, 234, 239, 188)),
+                              color: Color.fromARGB(255, 180, 90, 190)),
+                          fillColor: Color.fromARGB(255, 200, 130, 236)),
                     ),
                   ),
                 ),
@@ -109,7 +109,7 @@ class _CreateGroupState extends State<CreateGroup> {
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color.fromARGB(255, 221, 161, 71),
+                    backgroundColor: Color.fromARGB(255, 180, 90, 190),
                     foregroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.only(

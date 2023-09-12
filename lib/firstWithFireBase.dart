@@ -41,7 +41,7 @@ class firstWithFireBase extends StatelessWidget {
             Scaffold(
           appBar: AppBar(
             title: const Text(' '),
-            backgroundColor: Color.fromARGB(255, 172, 190, 90),
+            backgroundColor: Color.fromARGB(255, 180, 90, 190),
             bottom: TabBar(
               indicatorColor: Color.fromARGB(255, 251, 250, 248),
               indicatorWeight: 5,
@@ -116,9 +116,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 alignment: Alignment.center,
                 padding: const EdgeInsets.all(32),
                 decoration: const BoxDecoration(
-                  color: Color.fromARGB(255, 53, 78, 67),
+                  color: Color.fromARGB(255, 58, 4, 61),
                   image: DecorationImage(
-                    image: AssetImage('assets/images/of_main_bg.png'),
+                    image: AssetImage('assets/images/photo/of_main_bg.png'),
                     fit: BoxFit.fill,
                     opacity: 0.3,
                   ),
@@ -134,7 +134,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         controller: nameController,
                         decoration: InputDecoration(
                           filled: true,
-                          fillColor: Color.fromARGB(255, 202, 218, 131),
+                          fillColor: Color.fromARGB(255, 180, 90, 190),
                           focusedBorder: OutlineInputBorder(
                             borderSide: const BorderSide(
                                 color: AppColors.DARK_GREEN, width: 2.0),
@@ -179,10 +179,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                           TextStyle(color: AppColors.DARK_GREEN, fontSize: 13),
                       decoration: InputDecoration(
                         filled: true,
-                        fillColor: Color.fromARGB(255, 202, 218, 131),
+                        fillColor: Color.fromARGB(255, 200, 130, 236),
                         focusedBorder: OutlineInputBorder(
                           borderSide: const BorderSide(
-                              color: Color.fromARGB(255, 181, 207, 162),
+                              color: Color.fromARGB(255, 200, 130, 236),
                               width: 2.0),
                           borderRadius: BorderRadius.circular(25.0),
                         ),
@@ -233,8 +233,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     labelColor: Color.fromARGB(255, 255, 255, 255),
                     color: Colors.transparent,
                     highlight:
-                        Color.fromARGB(255, 172, 190, 90).withOpacity(0.5),
-                    borderColor: Color.fromARGB(255, 172, 190, 90),
+                        Color.fromARGB(255, 180, 90, 190).withOpacity(0.5),
+                    borderColor: Color.fromARGB(255, 180, 90, 190),
                     borderWidth: 4,
                     onClick: () async {
                       Customer customer = Customer();
@@ -268,7 +268,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                           'Sign up',
                           style: TextStyle(
                             fontSize: 21,
-                            color: Color.fromARGB(255, 202, 218, 131),
+                            color: Color.fromARGB(255, 200, 130, 236),
                           ),
                         ),
                         onPressed: () {

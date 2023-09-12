@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
      //   primarySwatch: Color.fromARGB(255, 172, 190, 9),
       ),
       home: MyHomePage(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -73,13 +74,13 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-            color: Color.fromARGB(255, 53, 78, 67),
+            color: Color.fromARGB(255, 58, 4, 61),
             child: Stack(
               children: [
                 Positioned.fill(
                   child: Opacity(
                     opacity: 0.3,
-                    child: Image.asset('assets/images/of_main_bg.png',
+                    child: Image.asset('assets/images/photo/of_main_bg.png',
                         fit: BoxFit.cover),
                   ),
                 ),
@@ -93,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                           child: Container(
                             width: 180,
                             height: 180,
-                            color: Color.fromARGB(255, 172, 190, 90),
+                            color: Color.fromARGB(255, 200, 130, 236),
                             alignment: Alignment.center,
                             child: ScaleTransition(
                               scale: _animation,
@@ -103,7 +104,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Image.asset("assets/images/logo.png",
+                                    Image.asset("assets/images/photo/logo.png",
                                         height: 160, width: 160),
                                   ],
                                 ),
@@ -127,7 +128,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                       ThemeButton(
                         label: 'Map1',
                         highlight: Colors.green[900],
-                        color: Color.fromARGB(255, 172, 190, 90),
+                        color: Color.fromARGB(255, 180, 90, 190),
                         onClick: () {
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (context) {

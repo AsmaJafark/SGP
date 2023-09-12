@@ -79,7 +79,7 @@ class _HomeScreenState extends State<HomeScreenChat>
         backgroundColor: Colors.blue,
         title: Row(
           children: [
-            Image.asset('assets/images/logo.png', height: 25),
+            Image.asset('assets/images/photo/logo.png', height: 25),
             SizedBox(width: 10),
             Text('Chats'),
           ],

@@ -38,7 +38,7 @@ class GroupChatRoom extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 172, 190, 90),
+        backgroundColor: Color.fromARGB(255, 200, 130, 236),
         title: Text(groupName),
         actions: [
           IconButton(
@@ -118,7 +118,7 @@ class GroupChatRoom extends StatelessWidget {
                             ),
                             filled: true,
                             hintStyle: TextStyle(
-                                color: Color.fromARGB(255, 178, 184, 122)),
+                                color: Color.fromARGB(255, 200, 130, 236)),
                             fillColor: Color.fromARGB(255, 216, 228, 202)),
                       ),
                     ),
@@ -159,7 +159,7 @@ class GroupChatRoom extends StatelessWidget {
                             bottomRight: Radius.circular(30),
                           ),
                 color: chatMap['sendBy'] == _auth.currentUser!.displayName
-                    ? Color.fromARGB(255, 154, 159, 76)
+                    ? Color.fromARGB(255, 180, 90, 190)
                     : Colors.white,
                 boxShadow: [
                   BoxShadow(
@@ -179,7 +179,7 @@ class GroupChatRoom extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                       color: chatMap['sendBy'] == _auth.currentUser!.displayName
                           ? Colors.white
-                          : Color.fromARGB(255, 165, 174, 84),
+                          : Color.fromARGB(255, 200, 130, 236),
                     ),
                   ),
                   SizedBox(
@@ -192,7 +192,7 @@ class GroupChatRoom extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                       color: chatMap['sendBy'] == _auth.currentUser!.displayName
                           ? Colors.white
-                          : Color.fromARGB(255, 165, 174, 84),
+                          : Color.fromARGB(255, 180, 90, 190),
                     ),
                   ),
                 ],

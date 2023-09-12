@@ -452,7 +452,7 @@ class _MyHomePageState extends State<Cart> {
                               content: Text(result['status'].toString()) ),
                         );
                       }
-                      getPostsData();qw:w:we
+                      getPostsData();
                     },
                     icon: const Icon(Icons.shopping_cart_checkout),
                     label: const Text('Checkout')),

@@ -46,7 +46,7 @@ class _GroupChatHomeScreenState extends State<GroupChatHomeScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 172, 190, 90),
+        backgroundColor: Color.fromARGB(255, 180, 90, 190),
         title: Text("Groups"),
       ),
       body: isLoading

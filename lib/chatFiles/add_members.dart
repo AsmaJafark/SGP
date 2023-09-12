@@ -68,7 +68,7 @@ class _AddMembersINGroupState extends State<AddMembersINGroup> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 172, 190, 90),
+        backgroundColor: Color.fromARGB(255, 200, 130, 236),
         title: Text("Add Members"),
       ),
       body: SingleChildScrollView(

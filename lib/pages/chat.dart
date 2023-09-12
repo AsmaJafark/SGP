@@ -47,7 +47,7 @@ class _ChatScreenState extends State<ChatScreen> {
         backgroundColor: Color.fromARGB(255, 172, 190, 90),
         title: Row(
           children: [
-            Image.asset('assets/images/logo.png', height: 25),
+            Image.asset('assets/images/photo/logo.png', height: 25),
             SizedBox(width: 10),
             Text('Chats')
           ],
@@ -210,7 +210,7 @@ class MessageLine extends StatelessWidget {
             '$sender',
             style: TextStyle(
               fontSize: 15,
-              color: Color.fromARGB(255, 172, 190, 90),
+              color: Color.fromARGB(255, 180, 90, 190),
             ),
           ),
           Material(

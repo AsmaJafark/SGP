@@ -28,7 +28,7 @@ class _MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-            color: Color.fromARGB(255, 53, 78, 67),
+            color: Color.fromARGB(255, 58, 4, 61),
             child: Stack(
               children: [
                 Positioned.fill(
@@ -47,13 +47,13 @@ class _MapScreenState extends State<MapScreen> {
                       Text('Map',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              color: Color.fromARGB(255, 172, 190, 90),
+                              color: Color.fromARGB(255, 200, 130, 236),
                               fontSize: 40,
                               fontWeight: FontWeight.w300)),
                       Text('_____________',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              color: Color.fromARGB(255, 172, 190, 90),
+                              color: Color.fromARGB(255, 180, 90, 190),
                               fontSize: 25,
                               fontWeight: FontWeight.w200)),
                       SizedBox(height: 30),
@@ -61,13 +61,13 @@ class _MapScreenState extends State<MapScreen> {
                           'This map help you to find the closest Market to your\n current Location.\nThe Markets that have an account in Appetizing',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              color: Color.fromARGB(255, 113, 126, 54),
+                              color: Color.fromARGB(255, 180, 90, 190),
                               fontSize: 14)),
                       SizedBox(height: 35),
                       ThemeButton(
                         label: 'Get Your Current Location',
                         highlight: Colors.green[900],
-                        color: Color.fromARGB(255, 172, 190, 90),
+                        color: Color.fromARGB(255, 200, 130, 236),
                         onClick: () {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {

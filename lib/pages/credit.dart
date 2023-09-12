@@ -93,7 +93,7 @@ class MySampleState extends State<MySample> {
             //         fit: BoxFit.fill,
             //       )
             //     : null,
-            color: Color.fromARGB(255, 172, 190, 150),
+            color: Color.fromARGB(255, 200, 130, 236),
           ),
           child: SafeArea(
             child: Column(

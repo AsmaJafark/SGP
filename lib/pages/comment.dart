@@ -116,7 +116,7 @@ getuser();
       appBar: AppBar(
         
         title: Text("Comment Page"),
-        backgroundColor:Color.fromARGB(255, 172, 190, 90),
+        backgroundColor:Color.fromARGB(255, 200, 130, 236),
       ),
       body: Container(
         child: CommentBox(
@@ -153,7 +153,7 @@ getuser();
           },
           formKey: formKey,
           commentController: commentController,
-          backgroundColor: Color.fromARGB(255, 172, 190, 90),
+          backgroundColor: Color.fromARGB(255, 200, 130, 236),
           textColor: Colors.white,
           sendWidget: Icon(Icons.send_sharp, size: 30, color: Colors.white),
         ),
