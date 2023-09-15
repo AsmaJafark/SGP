@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart';
+import 'package:mailer/mailer.dart';
+import 'package:mailer/smtp_server.dart';
 
 class Customer  {
 
@@ -26,7 +28,7 @@ class Customer  {
           'Access-Control-Allow-Origin': '*'
         },
         body: jsonEncode({'email': email, 'password': password}));
-
+    debugPrint(response.body.toString());
     var jsonResponse = jsonDecode(response.body);
     if (jsonResponse['status'] == "success") {
       debugPrint("Success: ${jsonResponse['message']}");
@@ -79,8 +81,9 @@ class Customer  {
           'Content-Type': 'application/json; charset=UTF-8',
           'Access-Control-Allow-Origin': '*',
         },
-        body: jsonEncode({'product_id': productId, 'user_id': this.id, 'quantity': 1})
+        body: jsonEncode({'product_id': productId, 'user_id': this.id, 'quantity': '1'})
     );
+    debugPrint(response.body.toString());
     var jsonResponse = jsonDecode(response.body);
 
     return jsonResponse;
@@ -435,7 +438,27 @@ class Customer  {
     var jsonResponse = jsonDecode(response.body);
     return jsonResponse;
   }
+
+  Future<void> sendEmail(String subject, String body, String recipient) async {
+    final smtpServer = gmail('hhammamnajemm@gmail.com', 'hammamatjg123321');
+
+    final message = Message()
+      ..from = Address('technolab.electronics@gmail.com', 'Hammam')
+      ..recipients.add(recipient) // Recipient's email address
+      ..subject = subject
+      ..text = body;
+
+    try {
+      final sendReport = await send(message, smtpServer);
+      print('Message sent: ${sendReport}');
+    } catch (error) {
+      print('Error sending email: $error');
+    }
+  }
 }
+
+
+
 
 class NotificationMessage {
   String title = '';

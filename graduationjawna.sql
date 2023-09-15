@@ -22,7 +22,7 @@ CREATE TABLE `id21212738_anasdatabase`.`products` (
 -------------------------------------------------
 CREATE TABLE `id21212738_anasdatabase`.`cart` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `product_id` INT NOT NULL UNIQUE,
+  `product_id` INT NOT NULL,
   `user_id` INT NOT NULL,
   `quantity` INT NOT NULL,
   INDEX `product_id_idx` (`product_id` ASC),

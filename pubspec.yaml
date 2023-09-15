@@ -46,11 +46,10 @@ dependencies:
   mvc_pattern: ^8.12.0
   flutter_swiper_plus : ^2.0.4
   image_utils_class: ^2.0.0
-  flutter_email_sender: ^5.0.2
+  mailer: ^5.0.4
   flutter:
-   
     sdk: flutter
-  
+
   http: 0.13.3
   flutter_calendar_carousel:
   table_calendar: ^2.2.1

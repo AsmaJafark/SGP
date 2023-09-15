@@ -16,7 +16,6 @@ import 'package:untitled/widgets/base_view.dart';
 import 'package:untitled/widgets/cart_product_item.dart';
 import 'package:untitled/constants/constants.dart';
 import 'dart:ui';
-import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:untitled/pages/fetchdata.dart';
 import 'package:timezone/timezone.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';

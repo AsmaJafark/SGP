@@ -440,6 +440,8 @@ class _MyHomePageState extends State<Cart> {
                     onPressed: () async {
                       Customer customer = Customer();
                       openDialogepay(customer.email);
+
+                      //await customer.sendEmail("Checkout Success", myList1.map((product) => product.productName).join(', '), customer.email);
                       var result = await customer.deleteAllProductsInCart();
                       if(result['status'] == 'success'){
                         ScaffoldMessenger.of(context).showSnackBar(
